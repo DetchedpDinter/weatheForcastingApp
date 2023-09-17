@@ -1,14 +1,14 @@
 {
   "files": {
-    "main.css": "/weatherForcastingApp/static/css/main.9d31d298.css",
-    "main.js": "/weatherForcastingApp/static/js/main.f54eb085.js",
-    "static/media/noData.svg": "/weatherForcastingApp/static/media/noData.3f276c7a80396ed5dc4ac41fb96a0125.svg",
-    "index.html": "/weatherForcastingApp/index.html",
-    "main.9d31d298.css.map": "/weatherForcastingApp/static/css/main.9d31d298.css.map",
-    "main.f54eb085.js.map": "/weatherForcastingApp/static/js/main.f54eb085.js.map"
+    "main.css": "/weatheForcastingApp%20/static/css/main.9d31d298.css",
+    "main.js": "/weatheForcastingApp%20/static/js/main.35f659a0.js",
+    "static/media/noData.svg": "/weatheForcastingApp%20/static/media/noData.3f276c7a80396ed5dc4ac41fb96a0125.svg",
+    "index.html": "/weatheForcastingApp%20/index.html",
+    "main.9d31d298.css.map": "/weatheForcastingApp%20/static/css/main.9d31d298.css.map",
+    "main.35f659a0.js.map": "/weatheForcastingApp%20/static/js/main.35f659a0.js.map"
   },
   "entrypoints": [
     "static/css/main.9d31d298.css",
-    "static/js/main.f54eb085.js"
+    "static/js/main.35f659a0.js"
   ]
 }
