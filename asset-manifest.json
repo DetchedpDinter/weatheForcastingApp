@@ -1,14 +1,14 @@
 {
   "files": {
-    "main.css": "/weatheForcastingApp/static/css/main.9d31d298.css",
-    "main.js": "/weatheForcastingApp/static/js/main.250723b6.js",
-    "static/media/noData.svg": "/weatheForcastingApp/static/media/noData.3f276c7a80396ed5dc4ac41fb96a0125.svg",
-    "index.html": "/weatheForcastingApp/index.html",
-    "main.9d31d298.css.map": "/weatheForcastingApp/static/css/main.9d31d298.css.map",
-    "main.250723b6.js.map": "/weatheForcastingApp/static/js/main.250723b6.js.map"
+    "main.css": "/DetchedpDinter.github.io/weatheForcastingApp/static/css/main.9d31d298.css",
+    "main.js": "/DetchedpDinter.github.io/weatheForcastingApp/static/js/main.e6384df7.js",
+    "static/media/noData.svg": "/DetchedpDinter.github.io/weatheForcastingApp/static/media/noData.3f276c7a80396ed5dc4ac41fb96a0125.svg",
+    "index.html": "/DetchedpDinter.github.io/weatheForcastingApp/index.html",
+    "main.9d31d298.css.map": "/DetchedpDinter.github.io/weatheForcastingApp/static/css/main.9d31d298.css.map",
+    "main.e6384df7.js.map": "/DetchedpDinter.github.io/weatheForcastingApp/static/js/main.e6384df7.js.map"
   },
   "entrypoints": [
     "static/css/main.9d31d298.css",
-    "static/js/main.250723b6.js"
+    "static/js/main.e6384df7.js"
   ]
 }
