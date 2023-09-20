@@ -36,7 +36,7 @@ const SearchBar = function (props) {
                         fontSize="large"
                         sx={{
                             color: 'black',
-                            '&:hover': { color: '#2d95bd' },
+                            '&:hover': { color: '#2EAFBE' },
                         }}
                     />
                 </Link>
