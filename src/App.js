@@ -5,14 +5,15 @@ import {
     TextField,
     Box,
     SvgIcon,
+    Autocomplete,
 } from '@mui/material/';
 import axios from 'axios';
-import moment from 'moment';
 import { Typography } from '@material-ui/core';
 import ThermostatIcon from '@mui/icons-material/Thermostat';
 import FilterDramaIcon from '@mui/icons-material/FilterDrama';
 import InvertColorsIcon from '@mui/icons-material/InvertColors';
 import AirIcon from '@mui/icons-material/Air';
+import GitHubIcon from '@mui/icons-material/GitHub';
 import { ReactComponent as IconNoData } from './icon/noData.svg';
 
 const SearchBar = function (props) {
@@ -24,21 +25,29 @@ const SearchBar = function (props) {
             direction="row"
             justifyContent="center"
         >
-            <TextField
-                label="Search"
-                sx={{ width: { sm: 200, md: 600 } }}
-                variant="standard"
-                color="primary"
-                value={props.value}
-                onChange={props.onChange}
-            />
-            <Button
-                variant="contained"
-                color="primary"
-                onClick={props.onClick}
-            >
-                submit
-            </Button>
+            <Box display={'flex'} alignItems={'center'}>
+                <GitHubIcon fontSize="large" />
+                <Autocomplete
+                    options={props.options}
+                    sx={{ width: 600 }}
+                    autoComplete
+                    renderInput={(params) => (
+                        <TextField
+                            {...params}
+                            onChange={props.onChange}
+                            label="Search"
+                        />
+                    )}
+                />
+
+                <Button
+                    variant="contained"
+                    color="primary"
+                    onClick={props.onClick}
+                >
+                    submit
+                </Button>
+            </Box>
         </Grid>
     );
 };
@@ -493,7 +502,7 @@ const CurrentForcast = (props) => {
             />
             <AirCondition
                 feels_like={props.feels_like}
-                clouds={props.cloud}
+                cloud={props.cloud}
                 wind={props.wind}
                 humidity={props.humidity}
             />
@@ -508,6 +517,7 @@ const CurrentForcast = (props) => {
 class App extends React.Component {
     state = {
         isSearched: false,
+        options: [],
         name: null,
         country: null,
         temp: '',
@@ -524,30 +534,24 @@ class App extends React.Component {
         hourlyData: [],
     };
     onSearch = (e) => {
-        this.setState({ temp: e.target.value });
-    };
-    onSearchEnter = () => {
-        axios(
-            `http://api.openweathermap.org/geo/1.0/direct?q=${this.state.temp}&appid=3294bea8b726314ddf3f0ddbe30b52a0`,
-        )
-            .then((result) => this.setSearchData(result.data))
-            .catch((error) => this.setState({ error }));
-    };
-    setSearchData = (res) => {
-        res.map((i) =>
-            this.setState(
-                { lat: i.lat, lon: i.lon, isSearched: true },
-                () =>
-                    this.currentWeather(
-                        this.state.lat,
-                        this.state.lon,
-                    ),
-            ),
+        this.setState({ temp: e.target.value }, () =>
+            axios(
+                `http://api.openweathermap.org/geo/1.0/direct?q=${this.state.temp}&appid=3294bea8b726314ddf3f0ddbe30b52a0`,
+            )
+                .then((result) => this.setOptions(result.data))
+                .catch((error) => this.setState({ error })),
         );
     };
-    currentWeather = (lat, lon) => {
+    setOptions = (res) => {
+        this.setState({
+            options: [`${res[0].name},${res[0].country}`],
+            lat: res[0].lat,
+            lon: res[0].lon,
+        });
+    };
+    currentWeather = () => {
         axios(
-            ` https://api.openweathermap.org/data/2.5/weather?lat=${lat}&lon=${lon}&units=metric&appid=3294bea8b726314ddf3f0ddbe30b52a0`,
+            ` https://api.openweathermap.org/data/2.5/weather?lat=${this.state.lat}&lon=${this.state.lon}&units=metric&appid=3294bea8b726314ddf3f0ddbe30b52a0`,
         )
             .then((result) => this.setCurrentWeatherData(result.data))
             .catch((error) => console.log({ error }));
@@ -555,6 +559,7 @@ class App extends React.Component {
     setCurrentWeatherData = (res) => {
         this.setState(
             {
+                isSearched: true,
                 cloud: res.clouds.all,
                 feels_like: res.main.feels_like,
                 humidity: res.main.humidity,
@@ -626,7 +631,6 @@ class App extends React.Component {
         for (let i = 7; i <= data.length - 1; i += 8) {
             x.push(data[i]);
         }
-        console.log(x);
         return x;
     };
     render() {
@@ -638,9 +642,10 @@ class App extends React.Component {
                 alignItems="flex-start"
             >
                 <SearchBar
+                    options={this.state.options}
                     value={this.state.temp}
                     onChange={this.onSearch}
-                    onClick={this.onSearchEnter}
+                    onClick={this.currentWeather}
                 />
                 {!this.state.isSearched ? (
                     <Box
