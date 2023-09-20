@@ -705,7 +705,7 @@ class App extends React.Component {
                         temprature={this.state.temprature}
                         srcIcon={this.state.srcIcon}
                         feels_like={this.state.feels_like}
-                        clouds={this.state.cloud}
+                        cloud={this.state.cloud}
                         wind={this.state.wind}
                         humidity={this.state.humidity}
                         hourlyData={this.state.hourlyData}
