@@ -8,7 +8,7 @@ import {
     Autocomplete,
 } from '@mui/material/';
 import axios from 'axios';
-import { Typography } from '@material-ui/core';
+import { Link, Typography } from '@material-ui/core';
 import ThermostatIcon from '@mui/icons-material/Thermostat';
 import FilterDramaIcon from '@mui/icons-material/FilterDrama';
 import InvertColorsIcon from '@mui/icons-material/InvertColors';
@@ -26,7 +26,20 @@ const SearchBar = function (props) {
             justifyContent="center"
         >
             <Box display={'flex'} alignItems={'center'}>
-                <GitHubIcon fontSize="large" />
+                <Link
+                    href="https://github.com/DetchedpDinter"
+                    target="_blank"
+                    underline="none"
+                    sx={{ display: 'flex' }}
+                >
+                    <GitHubIcon
+                        fontSize="large"
+                        sx={{
+                            color: 'black',
+                            '&:hover': { color: '#2d95bd' },
+                        }}
+                    />
+                </Link>
                 <Autocomplete
                     options={props.options}
                     sx={{ width: 600 }}
