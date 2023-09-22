@@ -42,7 +42,9 @@ const SearchBar = function (props) {
                 </Link>
                 <Autocomplete
                     options={props.options}
-                    sx={{ width: { xs: 300, md: 600, xl: 600 } }}
+                    sx={{
+                        width: { xs: 200, sm: 300, md: 600, xl: 600 },
+                    }}
                     autoComplete
                     renderInput={(params) => (
                         <TextField
