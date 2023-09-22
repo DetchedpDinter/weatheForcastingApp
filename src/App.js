@@ -549,7 +549,7 @@ class App extends React.Component {
     onSearch = (e) => {
         this.setState({ temp: e.target.value }, () =>
             axios(
-                `http://api.openweathermap.org/geo/1.0/direct?q=${this.state.temp}&appid=3294bea8b726314ddf3f0ddbe30b52a0`,
+                `https://api.openweathermap.org/geo/1.0/direct?q=${this.state.temp}&appid=3294bea8b726314ddf3f0ddbe30b52a0`,
             )
                 .then((result) => this.setOptions(result.data))
                 .catch((error) => this.setState({ error })),
